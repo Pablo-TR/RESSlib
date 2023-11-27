@@ -1,10 +1,10 @@
 close all;
 clear; 
-
+addpath('C:\Users\padlo\Desktop\ESEIAAT\TFG')
 %Test Git
 % Recall that RESSlib should be in Matlab Path 
 
-showImages=1; 
+showImages=3; 
 
 load('CassiniAll.mat'); % All Cassini spk kernels are obtained from
                         % exercise 3 (E3_Cassini Trajectory)

@@ -1,32 +1,32 @@
 close all; 
-
+addpath('C:\Users\padlo\Desktop\ESEIAAT\TFG\RESSlib')
 % Recall that RESSlib should be in Matlab Path 
 
 % TODO: improve pictures quality
 
 % First we download a list of ALL Cassini spk kernels, if it is not
 % available
-if ~isfile('CassiniAll.mat')
-    % This code fragment downloads a list of all R_SCPSE Cassini kernels
-    % and saves it in CassiniMat.mat file
-    % aareadme.txt contains a description of the kernels 
-    host='naif.jpl.nasa.gov'; % host
-    homekernels='/pub/naif/CASSINI/kernels/spk/'; % folder
-    ftpobj = ftp(host); % open server
-    cd(ftpobj,homekernels); % go to folder
-    allk=dir(ftpobj); % ls
-    MK={};
-    for i=1:length(allk)
-        if contains(allk(i).name,'R_SCPSE') % R: Reconstructed 
-            fprintf('%s  \n',allk(i).name );
-            MK{end+1}=sprintf('https://%s%s%s',host,homekernels,allk(i).name);
-        end
-    end
-
-    save('CassiniAll.mat','MK');
-else % otherwise, load it
+% if ~isfile('CassiniAll.mat')
+%     % This code fragment downloads a list of all R_SCPSE Cassini kernels
+%     % and saves it in CassiniMat.mat file
+%     % aareadme.txt contains a description of the kernels 
+%     host='naif.jpl.nasa.gov'; % host
+%     homekernels='/pub/naif/CASSINI/kernels/spk/'; % folder
+%     ftpobj = ftp(host); % open server
+%     cd(ftpobj,homekernels); % go to folder
+%     allk=dir(ftpobj); % ls
+%     MK={};
+%     for i=1:length(allk)
+%         if contains(allk(i).name,'R_SCPSE') % R: Reconstructed 
+%             fprintf('%s  \n',allk(i).name );
+%             MK{end+1}=sprintf('https://%s%s%s',host,homekernels,allk(i).name);
+%         end
+%     end
+% 
+%     save('CassiniAll.mat','MK');
+% else % otherwise, load it
     load('CassiniAll.mat');
-end
+% end
 
 
 % Add additional kernels also needed

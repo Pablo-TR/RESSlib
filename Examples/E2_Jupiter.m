@@ -7,6 +7,7 @@
 close all; 
 
 clear; 
+addpath('.../RESSlib')
 
 % Recall that RESSlib should be in Matlab Path 
 
@@ -46,20 +47,23 @@ scale = 149597871 ; % AU (km)
 [dio, lt] = cspice_spkezr('501',et,frame,abcorr,observer); % io
 [deu, lt] = cspice_spkezr('502',et,frame,abcorr,observer); % europa
 [dv1, lt] = cspice_spkezr('VG1',et,frame,abcorr,observer); % voyager1
+[dE, lt] = cspice_spkezr('399',et,frame,abcorr,observer); % Earth
 
 plot3(djup(1,:)/scale,djup(2,:)/scale,djup(3,:)/scale,'r','LineWidth',LW)
 hold on
 plot3(dio(1,:)/scale,dio(2,:)/scale,dio(3,:)/scale,'g','LineWidth',LW)
 plot3(deu(1,:)/scale,deu(2,:)/scale,deu(3,:)/scale,'b','LineWidth',LW)
 plot3(dv1(1,:)/scale,dv1(2,:)/scale,dv1(3,:)/scale,'k','LineWidth',LW)
+plot3(dE(1,:)/scale,dE(2,:)/scale,dE(3,:)/scale,'b','LineWidth',LW)
 xlabel('AU');
 ylabel('AU');
 zlabel('AU');
 axis('equal');
-legend({'J','I','E','V1'});
+legend({'J','I','E','V1', 'Ea'});
 title('VG1 Jupiter flyby. Obs: SS barycenter. Frame ECLIPJ2000');
 grid
 set(findall(gcf,'-property','FontSize'),'FontSize',18);
+
 
 % The same but the observer now will be Jupiter barycenter
 observer = '5'; % Jupiter barycenter (not Jupiter system barycenter)
@@ -69,6 +73,7 @@ scale = 66854; % Jupiter polar radius (km)
 [dio, lt] = cspice_spkezr('501',et,frame,abcorr,observer); % io
 [deu, lt] = cspice_spkezr('502',et,frame,abcorr,observer); % europa
 [dv1, lt] = cspice_spkezr('VG1',et,frame,abcorr,observer); % voyager1
+[dE, lt] = cspice_spkezr('399',et,frame,abcorr,observer); % Earth
 
 figure(2);
 
@@ -76,12 +81,13 @@ plot3(djup(1,:)/scale,djup(2,:)/scale,djup(3,:)/scale,'r','LineWidth',LW)
 hold on
 plot3(dio(1,:)/scale,dio(2,:)/scale,dio(3,:)/scale,'g','LineWidth',LW)
 plot3(deu(1,:)/scale,deu(2,:)/scale,deu(3,:)/scale,'b','LineWidth',LW)
+plot3(dE(1,:)/scale,dE(2,:)/scale,dE(3,:)/scale,'b','LineWidth',LW)
 plot3(dv1(1,:)/scale,dv1(2,:)/scale,dv1(3,:)/scale,'k','LineWidth',LW)
 xlabel('JR');
 ylabel('JR');
 zlabel('JR');
 axis('equal');
-legend({'J','I','E','V1'});
+legend({'J','I','E','V1','Ea'});
 title('VG1 Jupiter flyby. Obs: Jupiter barycenter. Frame ECLIPJ2000');
 grid
 set(findall(gcf,'-property','FontSize'),'FontSize',18);

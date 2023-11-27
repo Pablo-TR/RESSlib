@@ -3,6 +3,7 @@
 % Plot Earth and Moon position during 80 days from 2000-01-01
 close all; 
 clear; 
+addpath('../../RESSlib')
 % Recall that RESSlib should be in Matlab Path 
 % List of the kernels URL:
 METAKR={ 'https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls', ...

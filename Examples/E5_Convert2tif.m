@@ -3,7 +3,7 @@
 clear 
 close all
 
-showImages=0;
+showImages=3;
 
 
 
